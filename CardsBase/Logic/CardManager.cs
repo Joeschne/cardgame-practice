@@ -3,24 +3,30 @@ using CardsBase.GameElements.Collections;
 
 namespace CardsBase.Logic;
 
-public class CardManager
+internal class CardManager
 {
     private readonly Dictionary<Guid, CardCollection> cardLocations = new();
-    public void MoveCard(Card card, CardCollection newLocation)
-    {
-        if (card == null || newLocation == null)
-            throw new InvalidOperationException("Card and target collection must not be null.");
 
+    internal void RegisterCard(Card card, CardCollection initialLocation)
+    {
+        cardLocations[card.Id] = initialLocation;
+        initialLocation.AddCard(card);
+    }
+    internal void MoveCard(Card card, CardCollection newLocation, bool resetVisibility = true)
+    {
         if (!cardLocations.TryGetValue(card.Id, out var currentLocation))
             throw new InvalidOperationException("Card is not currently in any collection.");
 
-        // Remove from the current collection
-        currentLocation.RemoveCard(card);
+        if (currentLocation == newLocation)
+            throw new InvalidOperationException("Card is already in the specified collection.");
 
-        // Add to the new collection
+        currentLocation.RemoveCard(card);
         newLocation.AddCard(card);
 
-        // Update the location map
+        // Reset visibility unless explicitly overridden
+        if (resetVisibility)
+            card.ResetVisibility();
+
         cardLocations[card.Id] = newLocation;
     }
 }
