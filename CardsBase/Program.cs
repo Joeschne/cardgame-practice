@@ -1,9 +1,11 @@
-﻿namespace CardsBase;
+﻿using CardsBase.CLI;
+
+namespace CardsBase;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Menu.ShowMenu();
     }
 }

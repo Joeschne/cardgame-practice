@@ -8,6 +8,6 @@ public class PokerCard : Card
     {
         Value = value;
         Suit = suit;
-        Name = value.ToString() + "of" + suit.ToString();
+        Name = value.ToString() + " of " + suit.ToString();
     }
 }

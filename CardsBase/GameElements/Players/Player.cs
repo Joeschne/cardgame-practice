@@ -1,7 +1,19 @@
-﻿namespace CardsBase.GameElements.Players;
+﻿using CardsBase.GameElements.Collections;
+using CardsBase.Logic;
 
-public class Player
+namespace CardsBase.GameElements.Players;
+
+public abstract class Player
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
+    protected CardManager _cardManager;
+    public Guid Id { get; }
+    public string Name { get; }
+    public bool IsAI { get; }
+    public Player(CardManager manager, string name, bool isAI )
+    {
+        _cardManager = manager;
+        Name = name;
+        IsAI = isAI;
+    }
+    public abstract void ResetPlayer();
 }

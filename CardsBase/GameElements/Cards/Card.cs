@@ -13,6 +13,7 @@ public abstract class Card
     {
         Id = Guid.NewGuid();
     }
+    public override string ToString() => Name;
     internal bool IsRevealedTo(Player player)
     {
         if (_visibility == CardVisibility.Hidden) return false;

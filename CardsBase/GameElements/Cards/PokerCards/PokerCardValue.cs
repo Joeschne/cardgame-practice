@@ -2,6 +2,7 @@
 
 public enum PokerCardValue
 {
+    Ace = 14,
     Two = 2,
     Three = 3,
     Four = 4,
@@ -13,6 +14,5 @@ public enum PokerCardValue
     Ten = 10,
     Jack = 11,
     Queen = 12,
-    King = 13,
-    Ace = 14
+    King = 13
 }

@@ -6,7 +6,7 @@ namespace CardsBase.GameElements.Collections;
 public abstract class CardCollection
 {
     internal protected readonly List<Card> _cards = new();
-    internal protected IReadOnlyCollection<Card> Cards => _cards.AsReadOnly();
+    internal protected IReadOnlyList<Card> Cards => _cards.AsReadOnly();
 
     internal CardVisibility Visibility { get; set; }
 

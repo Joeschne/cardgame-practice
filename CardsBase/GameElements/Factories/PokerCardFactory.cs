@@ -11,7 +11,7 @@ public class PokerCardFactory
     {
         _cardManager = cardManager;
     }
-    public void CreateCard(PokerCardValue value, PokerCardSuit suit, CardCollection initialLocation)
+    internal void CreateCard(PokerCardValue value, PokerCardSuit suit, CardCollection initialLocation)
     {
         PokerCard card = new PokerCard(value, suit);
         _cardManager.RegisterCard(card, initialLocation);

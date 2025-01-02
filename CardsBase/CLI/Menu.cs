@@ -1,9 +1,12 @@
-﻿namespace CardsBase.CLI;
+﻿using CardsBase.Logic;
+
+namespace CardsBase.CLI;
 
 internal class Menu
 {
     public static void ShowMenu()
     {
-        Console.WriteLine("Hello");
+        BlackJackManager blackJackManager = new(1, "Joel");
+        blackJackManager.PlayGame();
     }
 }

@@ -3,7 +3,7 @@ using CardsBase.GameElements.Collections;
 
 namespace CardsBase.Logic;
 
-internal class CardManager
+public class CardManager
 {
     private readonly Dictionary<Guid, CardCollection> cardLocations = new();
 
@@ -12,6 +12,7 @@ internal class CardManager
         cardLocations[card.Id] = initialLocation;
         initialLocation.AddCard(card);
     }
+
     internal void MoveCard(Card card, CardCollection newLocation, bool resetVisibility = true)
     {
         if (!cardLocations.TryGetValue(card.Id, out var currentLocation))
@@ -28,5 +29,16 @@ internal class CardManager
             card.ResetVisibility();
 
         cardLocations[card.Id] = newLocation;
+    }
+
+    internal void DrawCard(CardCollection origin, CardCollection destination, int amount = 1)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            if (origin.Cards.Count == 0)
+                throw new InvalidOperationException("Origin is empty, card can't be drawn");
+            Card drawnCard = origin.Cards[0];
+            MoveCard(drawnCard, destination, false);
+        }
     }
 }
