@@ -2,8 +2,8 @@
 
 public class PokerCard : Card
 {
-    PokerCardValue Value { get;}
-    PokerCardSuit Suit { get;}
+    internal PokerCardValue Value { get; }
+    internal PokerCardSuit Suit { get; }
     public PokerCard(PokerCardValue value, PokerCardSuit suit) : base()
     {
         Value = value;

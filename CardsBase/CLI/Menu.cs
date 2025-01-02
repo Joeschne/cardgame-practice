@@ -6,7 +6,9 @@ internal class Menu
 {
     public static void ShowMenu()
     {
-        BlackJackManager blackJackManager = new(1, "Joel");
-        blackJackManager.PlayGame();
+        Console.WriteLine("What do you wanna do?");
+        BlackJackCLI blackJackCLI = new();
+        blackJackCLI.ShowMenu();
     }
+
 }
